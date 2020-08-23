@@ -1,0 +1,27 @@
+ <!DOCTYPE html>
+<html>
+<title>My Internship</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+	function changeCount(isIncrement) {
+		var countStr = document.getElementById('count').innerText
+		var countInt = parseInt(countStr);
+		countInt += isIncrement? 1 : -1;
+		document.getElementById('count').innerText = countInt
+	}
+</script>
+<body>
+
+<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min" id="us">
+  <div class="w3-content">
+    <h1 class="w3-center"><b>Counter app</b></h1>
+    <h2 class="w3-center" id="count">0</h2>
+	<div class="w3-center"> 
+		<button id="plus" class="w3-button w3-black w3-round w3-padding-large w3-large" onclick="changeCount(true)">+1</button> 
+		<button id="minus" class="w3-button w3-black w3-round w3-padding-large w3-large" onclick="changeCount(false)">-1</button></div>
+	</div>
+</div>
+
+</body>
+</html> 

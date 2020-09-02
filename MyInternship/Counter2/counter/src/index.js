@@ -10,6 +10,12 @@ class Counter extends React.Component {
     };  
   }
 
+  increment(num) {
+    this.setState(state => ({
+      count : Math.max(0, state.count + num)
+    }));
+  }
+
   render() {
     return (
       <div class="content">
@@ -18,12 +24,12 @@ class Counter extends React.Component {
         <div class="center buttons-wrapper"> 
           <button 
           class="plus button black" 
-          onClick={() => this.setState({count: this.state.count + 1})}>
+          onClick={() => this.increment(1)}>
             +1
           </button> 
           <button 
           class="minus button black" 
-          onClick={() => this.setState({count: Math.max(0, this.state.count - 1)})}>
+          onClick={() => this.increment(-1)}>
             -1
           </button>
           <button 

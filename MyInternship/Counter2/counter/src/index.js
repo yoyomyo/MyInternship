@@ -18,51 +18,47 @@ function counter(state = 0, action) {
   }
 }
 
-
 function Counter() {
   const [count, setCount] = useState(store.getState());
 
-    // Similar to componentDidMount and componentDidUpdate:  
-    useEffect(() => {    
-    // Update the document title using the browser API    
-      document.title = `You clicked ${count} times`;  });
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
 
-
-    return (
-      <div className="content">
-        <h1 className="center"><b>Counter</b></h1>
-        <h2 className="center" id="count">{count}</h2>
-        <div className="center buttons-wrapper"> 
-          <button 
-          className="plus button black" 
-          onClick={() => {
-            store.dispatch({ type: 'INCREMENT' });
-            setCount(store.getState());
-          }
-          }>
-            +1
-          </button> 
-          <button 
-          className="minus button black" 
-          onClick={() => {
-            store.dispatch({ type: 'DECREMENT' });
-            setCount(store.getState());
-          }}>
-            -1
-          </button>
-          <button 
-          className="reset button black" 
-          onClick={() => {
-            store.dispatch({ type: 'RESET' });
-            setCount(store.getState());
-          }}>
-            reset
-          </button>
-        </div>
+  return (
+    <div className="content">
+      <h1 className="center"><b>Counter</b></h1>
+      <h2 className="center" id="count">{count}</h2>
+      <div className="center buttons-wrapper"> 
+        <button 
+        className="plus button black" 
+        onClick={() => {
+          store.dispatch({ type: 'INCREMENT' });
+          setCount(store.getState());
+        }
+        }>
+          +1
+        </button> 
+        <button 
+        className="minus button black" 
+        onClick={() => {
+          store.dispatch({ type: 'DECREMENT' });
+          setCount(store.getState());
+        }}>
+          -1
+        </button>
+        <button 
+        className="reset button black" 
+        onClick={() => {
+          store.dispatch({ type: 'RESET' });
+          setCount(store.getState());
+        }}>
+          reset
+        </button>
       </div>
-    );
+    </div>
+  );
 }
-
 
 ReactDOM.render(
   <Counter />,

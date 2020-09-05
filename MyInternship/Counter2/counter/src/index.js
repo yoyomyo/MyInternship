@@ -1,27 +1,61 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { createStore } from 'redux';
+
+let store = createStore(counter)
+
+function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return Math.max(0, state - 1)
+    case 'RESET':
+      return 0
+    default:
+      return state
+  }
+}
+
 
 function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(store.getState());
+
+    // Similar to componentDidMount and componentDidUpdate:  
+    useEffect(() => {    
+    // Update the document title using the browser API    
+      document.title = `You clicked ${count} times`;  });
+
+
     return (
-      <div class="content">
-        <h1 class="center"><b>Counter</b></h1>
-        <h2 class="center" id="count">{count}</h2>
-        <div class="center buttons-wrapper"> 
+      <div className="content">
+        <h1 className="center"><b>Counter</b></h1>
+        <h2 className="center" id="count">{count}</h2>
+        <div className="center buttons-wrapper"> 
           <button 
-          class="plus button black" 
-          onClick={() => setCount(count + 1)}>
+          className="plus button black" 
+          onClick={() => {
+            store.dispatch({ type: 'INCREMENT' });
+            setCount(store.getState());
+          }
+          }>
             +1
           </button> 
           <button 
-          class="minus button black" 
-          onClick={() => setCount(Math.max(0, count-1))}>
+          className="minus button black" 
+          onClick={() => {
+            store.dispatch({ type: 'DECREMENT' });
+            setCount(store.getState());
+          }}>
             -1
           </button>
           <button 
-          class="reset button black" 
-          onClick={() => setCount(0)}>
+          className="reset button black" 
+          onClick={() => {
+            store.dispatch({ type: 'RESET' });
+            setCount(store.getState());
+          }}>
             reset
           </button>
         </div>

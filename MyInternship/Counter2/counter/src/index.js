@@ -2,6 +2,38 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { createStore } from 'redux';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+
+const content = css`
+  display:block;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+`
+const center = css`
+  text-align: center;
+`
+
+const button = css`
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  margin: 8px;
+`
+
+const black = css`
+  color: #fff !important;
+  background-color: #000 !important;
+`
 
 let store = createStore(counter)
 
@@ -26,12 +58,12 @@ function Counter() {
   });
 
   return (
-    <div className="content">
-      <h1 className="center"><b>Counter</b></h1>
-      <h2 className="center" id="count">{count}</h2>
-      <div className="center buttons-wrapper"> 
+    <div css={content}>
+      <h1 css={center}><b>Counter</b></h1>
+      <h2 css={center} id="count">{count}</h2>
+      <div css={center}> 
         <button 
-        className="plus button black" 
+        css={[button, black]}
         onClick={() => {
           store.dispatch({ type: 'INCREMENT' });
           setCount(store.getState());
@@ -40,7 +72,7 @@ function Counter() {
           +1
         </button> 
         <button 
-        className="minus button black" 
+        css={[button, black]}
         onClick={() => {
           store.dispatch({ type: 'DECREMENT' });
           setCount(store.getState());
@@ -48,7 +80,7 @@ function Counter() {
           -1
         </button>
         <button 
-        className="reset button black" 
+        css={[button, black]}
         onClick={() => {
           store.dispatch({ type: 'RESET' });
           setCount(store.getState());

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { createStore } from 'redux';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
